@@ -630,6 +630,18 @@ google.options({
 
 HTTP/2 is often more performant, as it allows multiplexing of multiple concurrent requests over a single socket. In a traditional HTTP/2 API, the client is directly responsible for opening and closing the sessions made to make requests.  To maintain compatibility with the existing API, this module will automatically re-use existing sessions, which are collected after idling for 500ms.  Much of the performance gains will be visible in batch style workloads, and tight loops.
 
+## MCP Server for Google Cloud
+
+A ready-to-run MCP server that wraps popular Google Cloud APIs (Storage, Pub/Sub, Secret Manager, Cloud Run, Compute) is available in `mcp-gcp/`.
+
+- Install and build:
+  - `cd mcp-gcp && npm install && npm run build`
+- Run over stdio:
+  - `npm start`
+- Configure your MCP-compatible client to invoke `node dist/server.js`.
+
+Requires Application Default Credentials. Locally run `gcloud auth application-default login` or set `GOOGLE_APPLICATION_CREDENTIALS` to a service account key file.
+
 ## Release Notes & Breaking Changes
 You can find a detailed list of breaking changes and new features in our [Release Notes][releasenotes]. If you've used this library before `25.x`, see our [Release Notes][releasenotes] to learn about migrating your code from `24.x.x` to `25.x.x`. It's pretty easy :)
 
